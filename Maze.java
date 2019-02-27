@@ -10,11 +10,12 @@ public class Maze {
     fileName = filename;
     File text = new File(filename);
     Scanner print = new Scanner(text);
-    while (print.hasNextLine())}{
+    while (print.hasNextLine()){
       String temp = print.nextLine();
       for (int i = 0; i < temp.length(); i++){
-        maze[i][0] = temp.charAt(i);
+        maze[count][0] = temp.charAt(i);
       }
+      count++;
       }
   }
     /*Constructor loads a maze text file, and sets animate to false by default.
