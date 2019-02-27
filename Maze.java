@@ -1,25 +1,28 @@
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.*;
+import java.io.*;
 public class Maze {
-  public static void main(String[] args) {
+  private char[][]maze;
+  private boolean animate;//false by default
+  private String fileName;
+  public Maze(String filename) throws FileNotFoundException{
+    
+  }
+    /*Constructor loads a maze text file, and sets animate to false by default.
 
-  }
-  public static String readFiles(){
-    File text = new File("input.txt");
-    Scanner inf = new Scanner(text);
-    int Size = inf.nextLine().length() - 1;
-    int Size2 = 0;
-    while(inf.hasNextLine()){
-      Size2++;
-    }
-    String[][] ary = new String[Size][Size2];
-    while(inf.h){
-      for (int i = 0; i < Size; i++){
-        for (int a = 0; a < Size2; a++){
-          ary[i][a] =
-        }
-      }
-    }
-  }
+      1. The file contains a rectangular ascii maze, made with the following 4 characters:
+      '#' - Walls - locations that cannot be moved onto
+      ' ' - Empty Space - locations that can be moved onto
+      'E' - the location of the goal (exactly 1 per file)
+
+      'S' - the location of the start(exactly 1 per file)
+
+      2. The maze has a border of '#' around the edges. So you don't have to check for out of bounds!
+
+
+      3. When the file is not found OR the file is invalid (not exactly 1 E and 1 S) then:
+
+         throw a FileNotFoundException or IllegalStateException
+
+    */
 }
