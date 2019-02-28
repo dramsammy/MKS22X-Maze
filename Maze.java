@@ -45,6 +45,7 @@ public class Maze {
   public String toString(){
     String returnValue = "";
     int count = 0;
+    try{
     File text = new File(fileName);
     Scanner print = new Scanner(text);
     while (print.hasNextLine()){
@@ -55,6 +56,10 @@ public class Maze {
       returnValue+= "\n";
         count++;
       }
+    }
+    catch (FileNotFoundException e) {
+    
+    }
     return returnValue;
       }
     }
