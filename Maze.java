@@ -52,7 +52,7 @@ public class Maze {
     }
     return returnValue;
       }
-  private int solve(int row, int col){ //you can add more parameters since this is private
+  private int solve(int row, int col, boolean deadEnd){ //you can add more parameters since this is private
     //automatic animation! You are welcome.
     int counter = 0;
     if(animate){
@@ -60,8 +60,9 @@ public class Maze {
       System.out.println(this);
       wait(20);
       }
+    if (maze[(row+1)][col+1] ==  
       //COMPLETE SOLVE
-    return -1; //so it compiles
+      return -1; //so it compiles
       }
 
     }
