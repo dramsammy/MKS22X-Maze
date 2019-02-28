@@ -44,22 +44,24 @@ public class Maze {
       }
   public String toString(){
     String returnValue = "";
-    int count = 0;
-    try{
-    File text = new File(fileName);
-    Scanner print = new Scanner(text);
-    while (print.hasNextLine()){
-      String temp = print.nextLine();
-      for (int i = 0; i < temp.length(); i++){
-        returnValue+= temp.charAt(i);
+    for (int i = 0; i < maze.length; i++){
+      for (int a = 0; a < maze[0].length; a++){
+        returnValue += maze[i][a];
       }
-      returnValue+= "\n";
-        count++;
-      }
-    }
-    catch (FileNotFoundException e) {
-    
+      returnValue += "\n";
     }
     return returnValue;
       }
+  private int solve(int row, int col){ //you can add more parameters since this is private
+    //automatic animation! You are welcome.
+    int counter = 0;
+    if(animate){
+      clearTerminal();
+      System.out.println(this);
+      wait(20);
+      }
+      //COMPLETE SOLVE
+    return -1; //so it compiles
+      }
+
     }
