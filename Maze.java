@@ -35,14 +35,26 @@ public class Maze {
          throw a FileNotFoundException or IllegalStateException
 
     */
-    public void setAnimate(boolean b){
-      animate = b;
-    }
-    public void clearTerminal(){
+  public void setAnimate(boolean b){
+    animate = b;
+      }
+  public void clearTerminal(){
     //erase terminal, go to top left of screen.
-      System.out.println("\033[2J\033[1;1H");
+    System.out.println("\033[2J\033[1;1H");
+      }
+  public String toString(){
+    String returnValue = "";
+    int count = 0;
+    File text = new File(fileName);
+    Scanner print = new Scanner(text);
+    while (print.hasNextLine()){
+      String temp = print.nextLine();
+      for (int i = 0; i < temp.length(); i++){
+        returnValue+= temp.charAt(i);
+      }
+      returnValue+= "\n";
+        count++;
+      }
+    return returnValue;
+      }
     }
-    public String toString(){
-      return "WRITE THIS METHOD";
-    }
-}
