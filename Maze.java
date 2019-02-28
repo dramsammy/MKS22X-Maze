@@ -13,7 +13,7 @@ public class Maze {
     while (print.hasNextLine()){
       String temp = print.nextLine();
       for (int i = 0; i < temp.length(); i++){
-        maze[count][0] = temp.charAt(i);
+        maze[count][i] = temp.charAt(i);
       }
       count++;
       }
@@ -35,4 +35,14 @@ public class Maze {
          throw a FileNotFoundException or IllegalStateException
 
     */
+    public void setAnimate(boolean b){
+      animate = b;
+    }
+    public void clearTerminal(){
+    //erase terminal, go to top left of screen.
+      System.out.println("\033[2J\033[1;1H");
+    }
+    public String toString(){
+      return "WRITE THIS METHOD";
+    }
 }
