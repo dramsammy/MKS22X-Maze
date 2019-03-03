@@ -39,16 +39,16 @@ public class Maze {
     animate = b;
   }
   private boolean checkMoveN(int row, int col){
-    return (!(maze[row - 1][col] == '#'));
+    return (!(maze[row - 1][col] == '#' || maze[row - 1][col] == '@'));
   }
   private boolean checkMoveS(int row, int col){
-    return (!(maze[row + 1][col] == '#'));
+    return (!(maze[row + 1][col] == '#' || maze[row - 1][col] == '@'));
   }
   private boolean checkMoveE(int row, int col){
-    return (!(maze[row][col + 1] == '#'));
+    return (!(maze[row][col + 1] == '#' || maze[row - 1][col] == '@'));
   }
   private boolean checkMoveW(int row, int col){
-    return (!(maze[row][col - 1] == '#'));
+    return (!(maze[row][col - 1] == '#' || maze[row - 1][col] == '@'));
   }
   public void clearTerminal(){
     //erase terminal, go to top left of screen.
@@ -72,7 +72,9 @@ public class Maze {
       System.out.println(this);
       wait(20);
       }
-    if (maze[(row+1)][col+1] ==
+    if ((checkMoveN(row, col)){
+
+    }
       //COMPLETE SOLVE
       return -1; //so it compiles
       }
