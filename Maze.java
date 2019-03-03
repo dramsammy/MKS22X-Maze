@@ -8,6 +8,8 @@ public class Maze {
   private int counter = 0;
   private int back;
   private int track;
+  private int SRow = 0;
+  private int SCol = 0;
   public Maze(String filename) throws FileNotFoundException{
     int count = 0;
     fileName = filename;
@@ -136,7 +138,17 @@ public class Maze {
       //COMPLETE SOLVE
     return -1; //so it compiles
       }
+  public int solve(){
+    for (int i = 0; i < maze.length; i++) {
+      for (int a = 0; a < maze[0].length; a++){
+        if (maze[i][a] == 'S'){
+          SRow = i;
+          SCol = a;
+        }
+      }
+    }
+    maze[SRow][SCol] = '@';
+    return solve(SRow, SCol);
+  }
 
-
-      
     }
