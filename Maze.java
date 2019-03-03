@@ -5,6 +5,7 @@ public class Maze {
   private char[][]maze;
   private boolean animate;//false by default
   private String fileName;
+  private int counter = 0;
   public Maze(String filename) throws FileNotFoundException{
     int count = 0;
     fileName = filename;
@@ -54,7 +55,26 @@ public class Maze {
     return (checkMoveN(row, col) || checkMoveS(row, col) || checkMoveE(row, col) || checkMoveW(row, col));
   }
   private boolean backTrack(int row, int col){
-
+    if (checkAllMoves(row, col)){
+      return true;
+    }
+    if (maze[row - 1][col] == '.'){
+      counter--;
+      backTrack(row - 1, col);
+    }
+    if (maze[row + 1][col == '.']){
+      counter--;
+      backTrack(row + 1, col);
+    }
+    if (maze[row][col + 1] == '.'){
+      counter--;
+      backTrack(row, col + 1);
+    }
+    if (maze[row][col - 1] == '.'){
+      counter--;
+      backTrack(row, col - 1)
+    }
+    return false;
   }
   public void clearTerminal(){
     //erase terminal, go to top left of screen.
@@ -72,7 +92,6 @@ public class Maze {
       }
   private int solve(int row, int col, boolean deadEnd){ //you can add more parameters since this is private
     //automatic animation! You are welcome.
-    int counter = 0;
     if(animate){
       clearTerminal();
       System.out.println(this);
