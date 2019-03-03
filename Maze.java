@@ -37,7 +37,19 @@ public class Maze {
     */
   public void setAnimate(boolean b){
     animate = b;
-      }
+  }
+  private boolean checkMoveN(int row, int col){
+    return (!(maze[row - 1][col] == '#'));
+  }
+  private boolean checkMoveS(int row, int col){
+    return (!(maze[row + 1][col] == '#'));
+  }
+  private boolean checkMoveE(int row, int col){
+    return (!(maze[row][col + 1] == '#'));
+  }
+  private boolean checkMoveW(int row, int col){
+    return (!(maze[row][col - 1] == '#'));
+  }
   public void clearTerminal(){
     //erase terminal, go to top left of screen.
     System.out.println("\033[2J\033[1;1H");
@@ -60,7 +72,7 @@ public class Maze {
       System.out.println(this);
       wait(20);
       }
-    if (maze[(row+1)][col+1] ==  
+    if (maze[(row+1)][col+1] ==
       //COMPLETE SOLVE
       return -1; //so it compiles
       }
