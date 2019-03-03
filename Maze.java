@@ -14,18 +14,21 @@ public class Maze {
     int rows = 0;
     int cols = 0;
     int count = 0;
+    String col = "";
     fileName = filename;
     File text = new File(filename);
     Scanner print = new Scanner(text);
     while (print.hasNextLine()){
       rows++;
+      col = print.nextLine();
     }
-    cols = rows.length() - 1;
+
+    cols = col.length();
     maze = new char[rows][cols];
-    Scanner print = new Scanner(print);
-    while (print.hasNextLine()){
-      String temp = print.nextLine();
-      for (int i = 0; i < temp.length(); i++){
+    Scanner print1 = new Scanner(text);
+    while (count < rows) {
+      String temp = print1.nextLine();
+      for (int i = 0; i < cols; i++){
         maze[count][i] = temp.charAt(i);
       }
       count++;
@@ -55,13 +58,13 @@ public class Maze {
     return (!(maze[row - 1][col] == '#' || maze[row - 1][col] == '@' || maze[row - 1][col] == '.'));
   }
   private boolean checkMoveS(int row, int col){
-    return (!(maze[row + 1][col] == '#' || maze[row - 1][col] == '@' || maze[row + 1][col] == '.'));
+    return (!(maze[row + 1][col] == '#' || maze[row + 1][col] == '@' || maze[row + 1][col] == '.'));
   }
   private boolean checkMoveE(int row, int col){
-    return (!(maze[row][col + 1] == '#' || maze[row - 1][col] == '@' || maze[row][col + 1] == '.'));
+    return (!(maze[row][col + 1] == '#' || maze[row][col + 1] == '@' || maze[row][col + 1] == '.'));
   }
   private boolean checkMoveW(int row, int col){
-    return (!(maze[row][col - 1] == '#' || maze[row - 1][col] == '@' || maze[row][col - 1] == '.'));
+    return (!(maze[row][col - 1] == '#' || maze[row][col - 1] == '@' || maze[row][col - 1] == '.'));
   }
   private boolean checkAllMoves(int row, int col){
     return (checkMoveN(row, col) || checkMoveS(row, col) || checkMoveE(row, col) || checkMoveW(row, col));
@@ -113,7 +116,7 @@ public class Maze {
     if(animate){
       clearTerminal();
       System.out.println(this);
-      wait(20);
+      wait(2000);
       }
     if (maze[row][col] == 'E'){
       return counter;
