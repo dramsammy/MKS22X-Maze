@@ -11,10 +11,18 @@ public class Maze {
   private int SRow = 0;
   private int SCol = 0;
   public Maze(String filename) throws FileNotFoundException{
+    int rows = 0;
+    int cols = 0;
     int count = 0;
     fileName = filename;
     File text = new File(filename);
     Scanner print = new Scanner(text);
+    while (print.hasNextLine()){
+      rows++;
+    }
+    cols = rows.length() - 1;
+    maze = new char[rows][cols];
+    Scanner print = new Scanner(print);
     while (print.hasNextLine()){
       String temp = print.nextLine();
       for (int i = 0; i < temp.length(); i++){
@@ -160,6 +168,7 @@ public class Maze {
   public static void main(String[] args) {
     try{
       Maze test = new Maze("data1.dat");
+      test.setAnimate(true);
       System.out.println(test);
       System.out.println(test.solve());
     }
@@ -167,3 +176,4 @@ public class Maze {
       System.out.println(e);
     }
     }
+  }
