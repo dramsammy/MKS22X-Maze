@@ -89,25 +89,25 @@ public class Maze {
     }
     if (maze[row - 1][col] == '@' && !checkStart(row - 1, col)){
       counter--;
-      System.out.println(counter);
+      //System.out.println(counter);
       maze[row - 1][col] = '.';
       backTrack(row - 1, col);
     }
     if (maze[row + 1][col] == '@' && !checkStart(row + 1, col)){
       counter--;
-      System.out.println(counter);
+      //System.out.println(counter);
       maze[row + 1][col] = '.';
       backTrack(row + 1, col);
     }
     if (maze[row][col + 1] == '@' && !checkStart(row, col + 1)){
       counter--;
-      System.out.println(counter);
+      //System.out.println(counter);
       maze[row][col + 1] = '.';
       backTrack(row, col + 1);
     }
     if (maze[row][col - 1] == '@' && !checkStart(row, col - 1)){
       counter--;
-      System.out.println(counter);
+      //System.out.println(counter);
       maze[row][col - 1] = '.';
       backTrack(row, col - 1);
     }
@@ -131,36 +131,39 @@ public class Maze {
     //automatic animation! You are welcome.
     if(animate){
       clearTerminal();
+      System.out.println(row + "," + col);
       System.out.println(this);
-      System.out.println(counter);
       wait(100);
       }
-    if (ref[row][col] == 'E'){
-      System.out.println(counter);
-      return 100;
+    if ( row == 3 && col == 3 ){
+      return 1021;
     }
     if (checkMoveN(row, col)){
       maze[row - 1][col] = '@';
+
       counter++;
-      System.out.println(counter);
+      //System.out.println(counter);
       solve(row - 1, col);
     }
     if (checkMoveS(row, col)){
       maze[row + 1][col] = '@';
+
       counter++;
-      System.out.println(counter);
+      //System.out.println(counter);
       solve(row + 1, col);
     }
     if (checkMoveE(row, col)){
       maze[row][col + 1] = '@';
+
       counter++;
-      System.out.println(counter);
+      //System.out.println(counter);
       solve(row, col + 1);
     }
     if (checkMoveW(row, col)){
       maze[row][col - 1] = '@';
+
       counter++;
-      System.out.println(counter);
+      //System.out.println(counter);
       solve(row, col - 1);
     }
     if (!checkAllMoves(row, col)){
@@ -193,9 +196,10 @@ public class Maze {
     try{
       Maze test = new Maze("data1.dat");
       System.out.println(test);
-      test.setAnimate(false);
+      test.setAnimate(true);
       System.out.println(test.solve());
-      System.out.println(test.counter);
+      System.out.println(test.ref[3][3]);
+      System.out.println(test.ref[5][1]);
 
     }
     catch(FileNotFoundException e){
