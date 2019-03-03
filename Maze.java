@@ -6,6 +6,8 @@ public class Maze {
   private boolean animate;//false by default
   private String fileName;
   private int counter = 0;
+  private int back;
+  private int track;
   public Maze(String filename) throws FileNotFoundException{
     int count = 0;
     fileName = filename;
@@ -56,6 +58,8 @@ public class Maze {
   }
   private boolean backTrack(int row, int col){
     if (checkAllMoves(row, col)){
+      back = row;
+      track = col;
       return true;
     }
     if (maze[row - 1][col] == '@'){
@@ -101,6 +105,9 @@ public class Maze {
       System.out.println(this);
       wait(20);
       }
+    if (maze[row][col] = 'E'){
+      return 1;
+    }
     if (checkMoveN(row, col)){
       maze[row - 1][col] = '@';
       counter++;
@@ -122,10 +129,14 @@ public class Maze {
       solve(row, col - 1);
     }
     if (!checkAllMoves(row, col)){
-      backTrack(row, col);
+      if(backTrack(row, col) == true){
+        solve(row, col);
+      }
     }
       //COMPLETE SOLVE
-      return -1; //so it compiles
+    return -1; //so it compiles
       }
 
+
+      
     }
