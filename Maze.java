@@ -90,7 +90,7 @@ public class Maze {
     }
     return returnValue;
       }
-  private int solve(int row, int col, boolean deadEnd){ //you can add more parameters since this is private
+  private int solve(int row, int col){ //you can add more parameters since this is private
     //automatic animation! You are welcome.
     if(animate){
       clearTerminal();
@@ -99,15 +99,23 @@ public class Maze {
       }
     if (checkMoveN(row, col)){
       maze[row - 1][col] = '@';
+      counter++;
+      solve(row - 1, col);
     }
     if (checkMoveS(row, col)){
       maze[row + 1][col] = '@';
+      counter++;
+      solve(row + 1, col);
     }
     if (checkMoveE(row, col)){
       maze[row][col + 1] = '@';
+      counter++;
+      solve(row, col + 1);
     }
     if (checkMoveW(row, col)){
       maze[row][col - 1] = '@';
+      counter++;
+      solve(row, col - 1);
     }
       //COMPLETE SOLVE
       return -1; //so it compiles
