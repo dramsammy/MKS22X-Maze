@@ -97,8 +97,17 @@ public class Maze {
       System.out.println(this);
       wait(20);
       }
-    if ((checkMoveN(row, col)){
-
+    if (checkMoveN(row, col)){
+      maze[row - 1][col] = '@';
+    }
+    if (checkMoveS(row, col)){
+      maze[row + 1][col] = '@';
+    }
+    if (checkMoveE(row, col)){
+      maze[row][col + 1] = '@';
+    }
+    if (checkMoveW(row, col)){
+      maze[row][col - 1] = '@';
     }
       //COMPLETE SOLVE
       return -1; //so it compiles
