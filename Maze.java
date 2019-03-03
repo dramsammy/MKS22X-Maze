@@ -39,16 +39,22 @@ public class Maze {
     animate = b;
   }
   private boolean checkMoveN(int row, int col){
-    return (!(maze[row - 1][col] == '#' || maze[row - 1][col] == '@'));
+    return (!(maze[row - 1][col] == '#' || maze[row - 1][col] == '@' || maze[row - 1][col] == '.'));
   }
   private boolean checkMoveS(int row, int col){
-    return (!(maze[row + 1][col] == '#' || maze[row - 1][col] == '@'));
+    return (!(maze[row + 1][col] == '#' || maze[row - 1][col] == '@' || maze[row + 1][col] == '.'));
   }
   private boolean checkMoveE(int row, int col){
-    return (!(maze[row][col + 1] == '#' || maze[row - 1][col] == '@'));
+    return (!(maze[row][col + 1] == '#' || maze[row - 1][col] == '@' || maze[row][col + 1] == '.'));
   }
   private boolean checkMoveW(int row, int col){
-    return (!(maze[row][col - 1] == '#' || maze[row - 1][col] == '@'));
+    return (!(maze[row][col - 1] == '#' || maze[row - 1][col] == '@' || maze[row][col - 1] == '.'));
+  }
+  private boolean checkAllMoves(int row, int col){
+    return (checkMoveN(row, col) || checkMoveS(row, col) || checkMoveE(row, col) || checkMoveW(row, col));
+  }
+  private boolean backTrack(int row, int col){
+
   }
   public void clearTerminal(){
     //erase terminal, go to top left of screen.
