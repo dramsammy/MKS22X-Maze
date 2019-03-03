@@ -69,28 +69,34 @@ public class Maze {
   private boolean checkAllMoves(int row, int col){
     return (checkMoveN(row, col) || checkMoveS(row, col) || checkMoveE(row, col) || checkMoveW(row, col));
   }
+  private boolean checkStart(int row, int col){
+    if (SRow == row && SCol == col){
+      return true;
+    }
+    return false;
+  }
   private boolean backTrack(int row, int col){
     if (checkAllMoves(row, col)){
       back = row;
       track = col;
       return true;
     }
-    if (maze[row - 1][col] == '@'){
+    if (maze[row - 1][col] == '@' && !checkStart(row - 1, col)){
       counter--;
       maze[row - 1][col] = '.';
       backTrack(row - 1, col);
     }
-    if (maze[row + 1][col] == '@'){
+    if (maze[row + 1][col] == '@' && !checkStart(row + 1, col)){
       counter--;
       maze[row + 1][col] = '.';
       backTrack(row + 1, col);
     }
-    if (maze[row][col + 1] == '@'){
+    if (maze[row][col + 1] == '@' && !checkStart(row, col + 1)){
       counter--;
       maze[row][col + 1] = '.';
       backTrack(row, col + 1);
     }
-    if (maze[row][col - 1] == '@'){
+    if (maze[row][col - 1] == '@' && !checkStart(row, col - 1)){
       counter--;
       maze[row][col - 1] = '.';
       backTrack(row, col - 1);
@@ -116,7 +122,7 @@ public class Maze {
     if(animate){
       clearTerminal();
       System.out.println(this);
-      wait(2000);
+      wait(500);
       }
     if (maze[row][col] == 'E'){
       return counter;
@@ -143,7 +149,7 @@ public class Maze {
     }
     if (!checkAllMoves(row, col)){
       if(backTrack(row, col) == true){
-        solve(row, col);
+        solve(back, track);
       }
     }
       //COMPLETE SOLVE
