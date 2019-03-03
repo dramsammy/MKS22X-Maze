@@ -58,20 +58,24 @@ public class Maze {
     if (checkAllMoves(row, col)){
       return true;
     }
-    if (maze[row - 1][col] == '.'){
+    if (maze[row - 1][col] == '@'){
       counter--;
+      maze[row - 1][col] = '.';
       backTrack(row - 1, col);
     }
-    if (maze[row + 1][col == '.']){
+    if (maze[row + 1][col == '@']){
       counter--;
+      maze[row + 1][col] = '.';
       backTrack(row + 1, col);
     }
-    if (maze[row][col + 1] == '.'){
+    if (maze[row][col + 1] == '@'){
       counter--;
+      maze[row][col + 1] = '.';
       backTrack(row, col + 1);
     }
-    if (maze[row][col - 1] == '.'){
+    if (maze[row][col - 1] == '@'){
       counter--;
+      maze[row][col - 1] = '.';
       backTrack(row, col - 1)
     }
     return false;
@@ -116,6 +120,9 @@ public class Maze {
       maze[row][col - 1] = '@';
       counter++;
       solve(row, col - 1);
+    }
+    if (!checkAllMoves(row, col)){
+      backTrack(row, col);
     }
       //COMPLETE SOLVE
       return -1; //so it compiles
