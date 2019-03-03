@@ -69,7 +69,7 @@ public class Maze {
       maze[row - 1][col] = '.';
       backTrack(row - 1, col);
     }
-    if (maze[row + 1][col == '@']){
+    if (maze[row + 1][col] == '@'){
       counter--;
       maze[row + 1][col] = '.';
       backTrack(row + 1, col);
@@ -82,7 +82,7 @@ public class Maze {
     if (maze[row][col - 1] == '@'){
       counter--;
       maze[row][col - 1] = '.';
-      backTrack(row, col - 1)
+      backTrack(row, col - 1);
     }
     return false;
   }
@@ -107,7 +107,7 @@ public class Maze {
       System.out.println(this);
       wait(20);
       }
-    if (maze[row][col] = 'E'){
+    if (maze[row][col] == 'E'){
       return counter;
     }
     if (checkMoveN(row, col)){
@@ -150,9 +150,20 @@ public class Maze {
     maze[SRow][SCol] = '@';
     return solve(SRow, SCol);
   }
+  private void wait(int millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            // do nothing
+        }
+}
   public static void main(String[] args) {
-    Maze test = new Maze("data1.dat");
-    System.out.println(test);
-    System.out.println(test.solve());
-  }
+    try{
+      Maze test = new Maze("data1.dat");
+      System.out.println(test);
+      System.out.println(test.solve());
+    }
+    catch(FileNotFoundException e){
+      System.out.println(e);
+    }
     }
