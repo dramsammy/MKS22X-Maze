@@ -108,7 +108,7 @@ public class Maze {
       wait(20);
       }
     if (maze[row][col] = 'E'){
-      return 1;
+      return counter;
     }
     if (checkMoveN(row, col)){
       maze[row - 1][col] = '@';
@@ -136,7 +136,7 @@ public class Maze {
       }
     }
       //COMPLETE SOLVE
-    return -1; //so it compiles
+    return counter; //so it compiles
       }
   public int solve(){
     for (int i = 0; i < maze.length; i++) {
@@ -150,5 +150,9 @@ public class Maze {
     maze[SRow][SCol] = '@';
     return solve(SRow, SCol);
   }
-
+  public static void main(String[] args) {
+    Maze test = new Maze("data1.dat");
+    System.out.println(test);
+    System.out.println(test.solve());
+  }
     }
