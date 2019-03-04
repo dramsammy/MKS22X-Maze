@@ -215,6 +215,11 @@ public class Maze {
      Maze test1 = new Maze("data2.dat");
      test1.setAnimate(true);
      System.out.println(test1.solve());
+     Maze test2 = new Maze("data3.dat");
+     System.out.println(test2);
+     test2.setAnimate(true);
+     System.out.println(test2.solve());
+     System.out.println(test2);
     }
     catch(FileNotFoundException e){
       System.out.println(e);
