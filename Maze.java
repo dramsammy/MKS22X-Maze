@@ -210,11 +210,11 @@ public class Maze {
       test.setAnimate(true);
       System.out.println(test.solve());
       System.out.println(test);
-  //    System.out.println(test.ref[3][3]);
-    //  System.out.println(test.ref[5][1]);
-    //  Maze test1 = new Maze("data2.dat");
-    //  test1.setAnimate(true);
-    //  System.out.println(test1.solve());
+     System.out.println(test.ref[3][3]);
+     System.out.println(test.ref[5][1]);
+     Maze test1 = new Maze("data2.dat");
+     test1.setAnimate(true);
+     System.out.println(test1.solve());
     }
     catch(FileNotFoundException e){
       System.out.println(e);
