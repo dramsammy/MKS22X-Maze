@@ -13,7 +13,7 @@ public class Maze {
   private int SCol = 0;
   private int temporary = 0;
   public Maze(String filename) throws FileNotFoundException{
-    counter = 2;
+    counter = 1;
     int rows = 0;
     int cols = 0;
     int count = 0;
@@ -88,24 +88,28 @@ public class Maze {
       return true;
     }
     if (maze[row - 1][col] == '@' && !checkStart(row - 1, col)){
+      maze[row][col] =  '.';
       counter--;
       //System.out.println(counter);
       maze[row - 1][col] = '.';
       return backTrack(row - 1, col);
     }
     if (maze[row + 1][col] == '@' && !checkStart(row + 1, col)){
+      maze[row][col] =  '.';
       counter--;
       //System.out.println(counter);
       maze[row + 1][col] = '.';
       return backTrack(row + 1, col);
     }
     if (maze[row][col + 1] == '@' && !checkStart(row, col + 1)){
+      maze[row][col] =  '.';
       counter--;
       //System.out.println(counter);
       maze[row][col + 1] = '.';
       return backTrack(row, col + 1);
     }
     if (maze[row][col - 1] == '@' && !checkStart(row, col - 1)){
+      maze[row][col] =  '.';
       counter--;
       //System.out.println(counter);
       maze[row][col - 1] = '.';
@@ -141,8 +145,8 @@ public class Maze {
       System.out.println(this);
       wait(100);
       }
-      if (checkE(row,col)){
-        return 10;
+      if (ref[row][col] == 'E' && maze[row][col] == '@'){
+        return counter;
       }
       if (checkMoveN(row, col)){
       maze[row - 1][col] = '@';
