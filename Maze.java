@@ -81,35 +81,35 @@ public class Maze {
     return false;
   }
   private boolean backTrack(int row, int col){
-    if (checkAllMoves(row, col)){
-      maze[row][col] = '@';
+    if (maze[row - 1][col] == ' ' || maze[row + 1][col] == ' ' || maze[row][col - 1] == ' ' || maze[row][col + 1] == ' '){
       back = row;
       track = col;
+      maze[back][track] = '@';
       return true;
     }
     if (maze[row - 1][col] == '@' && !checkStart(row - 1, col)){
       counter--;
       //System.out.println(counter);
       maze[row - 1][col] = '.';
-      backTrack(row - 1, col);
+      return backTrack(row - 1, col);
     }
     if (maze[row + 1][col] == '@' && !checkStart(row + 1, col)){
       counter--;
       //System.out.println(counter);
       maze[row + 1][col] = '.';
-      backTrack(row + 1, col);
+      return backTrack(row + 1, col);
     }
     if (maze[row][col + 1] == '@' && !checkStart(row, col + 1)){
       counter--;
       //System.out.println(counter);
       maze[row][col + 1] = '.';
-      backTrack(row, col + 1);
+      return backTrack(row, col + 1);
     }
     if (maze[row][col - 1] == '@' && !checkStart(row, col - 1)){
       counter--;
       //System.out.println(counter);
       maze[row][col - 1] = '.';
-      backTrack(row, col - 1);
+      return backTrack(row, col - 1);
     }
     return false;
   }
@@ -127,6 +127,12 @@ public class Maze {
     }
     return returnValue;
       }
+  private boolean checkE(int row, int col){
+    if (ref[row - 1][col] == 'E' || ref[row + 1][col] == 'E' || ref[row][col - 1] == 'E' || ref[row][col + 1] == 'E'){
+      return true;
+    }
+    return false;
+  }
   private int solve(int row, int col){ //you can add more parameters since this is private
     //automatic animation! You are welcome.
     if(animate){
@@ -135,40 +141,41 @@ public class Maze {
       System.out.println(this);
       wait(100);
       }
-    if ( row == 3 && col == 3 ){
-      return 1021;
-    }
-    if (checkMoveN(row, col)){
+      if (checkE(row,col)){
+        return 10;
+      }
+      if (checkMoveN(row, col)){
       maze[row - 1][col] = '@';
 
       counter++;
       //System.out.println(counter);
-      solve(row - 1, col);
+      return solve(row - 1, col);
     }
     if (checkMoveS(row, col)){
       maze[row + 1][col] = '@';
 
       counter++;
       //System.out.println(counter);
-      solve(row + 1, col);
+      return solve(row + 1, col);
     }
     if (checkMoveE(row, col)){
       maze[row][col + 1] = '@';
-
       counter++;
       //System.out.println(counter);
-      solve(row, col + 1);
+      return solve(row, col + 1);
     }
     if (checkMoveW(row, col)){
       maze[row][col - 1] = '@';
 
       counter++;
       //System.out.println(counter);
-      solve(row, col - 1);
+      return solve(row, col - 1);
     }
     if (!checkAllMoves(row, col)){
       if(backTrack(row, col) == true){
-        solve(back, track);
+        System.out.println("true");
+        System.out.println(counter);
+        return solve(back, track);
       }
     }
       //COMPLETE SOLVE
@@ -198,9 +205,12 @@ public class Maze {
       System.out.println(test);
       test.setAnimate(true);
       System.out.println(test.solve());
-      System.out.println(test.ref[3][3]);
-      System.out.println(test.ref[5][1]);
-
+      System.out.println(test);
+  //    System.out.println(test.ref[3][3]);
+    //  System.out.println(test.ref[5][1]);
+    //  Maze test1 = new Maze("data2.dat");
+    //  test1.setAnimate(true);
+    //  System.out.println(test1.solve());
     }
     catch(FileNotFoundException e){
       System.out.println(e);
